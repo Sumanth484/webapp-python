@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block content %}
+<h2>Home Page</h2>
+<p>This is a simple web application using FastAPI.</p>
+
+<!-- Form to add a new item -->
+<h3>Add a New Item</h3>
+<form method="post" action="/items/">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required />
+  <br />
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" required></textarea>
+  <br />
+  <button type="submit">Add Item</button>
+</form>
+
+<!-- Button to view all items -->
+<h3>Items List</h3>
+<button id="view-items">View All Items</button>
+<ul id="items-list"></ul>
+
+<script>
+  document.getElementById("view-items").addEventListener("click", async () => {
+    const response = await fetch("/items-json");
+    const items = await response.json();
+    const itemsList = document.getElementById("items-list");
+    itemsList.innerHTML = ""; // Clear existing items
+    items.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = `${item.name}: ${item.description}`;
+      itemsList.appendChild(li);
+    });
+  });
+</script>
+{% endblock %}

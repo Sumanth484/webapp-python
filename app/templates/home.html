@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block content %}
+<h2>Items List</h2>
+<ul class="item-list">
+  {% for item in items %}
+  <li>
+    <strong>{{ item.name }}</strong>: {{ item.description }}
+    <a href="/edit-item/{{ item.id }}" class="edit-link">Edit</a>
+  </li>
+  {% endfor %}
+</ul>
+<a href="/add-item" class="add-button">Add New Item</a>
+{% endblock %}

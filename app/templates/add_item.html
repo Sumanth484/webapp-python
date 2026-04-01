@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+<h2>Add a New Item</h2>
+<form class="form-container" method="post" action="/items/">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required />
+  <br />
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" required></textarea>
+  <br />
+  <button type="submit" class="submit-button">Add Item</button>
+</form>
+<a href="/" class="back-link">Back to Home</a>
+{% endblock %}

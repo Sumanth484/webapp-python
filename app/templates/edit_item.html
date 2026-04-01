@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block content %}
+<h2>Edit Item</h2>
+<form class="form-container" method="post" action="/edit-item/{{ item.id }}">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" value="{{ item.name }}" required />
+  <br />
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" required>
+{{ item.description }}</textarea
+  >
+  <br />
+  <button type="submit" class="submit-button">Update Item</button>
+</form>
+<a href="/" class="back-link">Back to Home</a>
+{% endblock %}
