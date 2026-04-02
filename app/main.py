@@ -31,6 +31,7 @@ async def lifespan(app: FastAPI):
     yield
     # Shutdown logic (if needed, add here)
 app = FastAPI(lifespan=lifespan)
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 # Load environment variables from .env file
 load_dotenv()
